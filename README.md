@@ -42,19 +42,19 @@ class DenoisingAutoencoder(nn.Module):
     def __init__(self):
         super(DenoisingAutoencoder, self).__init__()
         self.encoder = nn.Sequential(
-            nn.Conv2d(1, 16, 3, padding=1),  # 28x28 -> 28x28
+            nn.Conv2d(1, 16, 3, padding=1),
             nn.ReLU(),
-            nn.MaxPool2d(2, 2),             # 28x28 -> 14x14
-            nn.Conv2d(16, 8, 3, padding=1), # 14x14 -> 14x14
+            nn.MaxPool2d(2, 2),
+            nn.Conv2d(16, 8, 3, padding=1),
             nn.ReLU(),
-            nn.MaxPool2d(2, 2)              # 14x14 -> 7x7
+            nn.MaxPool2d(2, 2)
         )
         self.decoder = nn.Sequential(
-            nn.ConvTranspose2d(8, 16, 2, stride=2),    # 7x7 -> 14x14
+            nn.ConvTranspose2d(8, 16, 2, stride=2),
             nn.ReLU(),
-            nn.ConvTranspose2d(16, 8, 2, stride=2),    # 14x14 -> 28x28
+            nn.ConvTranspose2d(16, 8, 2, stride=2),
             nn.ReLU(),
-            nn.Conv2d(8, 1, 3, padding=1),             # 28x28
+            nn.Conv2d(8, 1, 3, padding=1),
             nn.Sigmoid()
         )
 
@@ -99,8 +99,8 @@ def visualize_denoising(model, loader, num_images=10):
     noisy_images = noisy_images.cpu().numpy()
     outputs = outputs.cpu().numpy()
 
-    print("Name: Anu Varshini")
-    print("Register Number: 212223240010")
+    print("Name: POZHILAN V D")
+    print("Register Number:212223240118")
     plt.figure(figsize=(18, 6))
     for i in range(num_images):
         # Original
@@ -129,15 +129,13 @@ def visualize_denoising(model, loader, num_images=10):
 
 ### Model Summary
 
-![image](https://github.com/user-attachments/assets/7fec38fc-5591-4f59-915e-ed1c581d2f4e)
+![image](https://github.com/user-attachments/assets/e348d16d-58c7-496e-9fed-050a18884cf3)
 
 
 
 ### Original vs Noisy Vs Reconstructed Image
 
-![image](https://github.com/user-attachments/assets/4b4e51fb-358d-4b61-b532-9fb2305e195d)
-
-
+![image](https://github.com/user-attachments/assets/d10bc9f8-b58f-47b2-b2a9-7dec8a967589)
 
 
 
